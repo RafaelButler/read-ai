@@ -19,7 +19,7 @@
             </svg>
             Exportar
         </x-secondary-button>
-        <x-button wire:click="create">
+        <x-button wire:click="showModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  class="lucide lucide-plus mr-1">
@@ -32,7 +32,7 @@
     <div class="max-h-[38.5rem]">
 
         <div class="relative ">
-            <x-shred.table/>
+            <x-shred.table :readings="$readings"/>
         </div>
 
     </div>
@@ -43,23 +43,27 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="flex flex-col gap-3">
+            <form class="flex flex-col gap-3">
                 <div class="grid grid-cols-3 gap-4 items-center">
                     <div>
                         <x-label for="title" value="{{ __('Título') }}"/>
                         <x-input wire:model="title" id="title" placeholder="Guerra e Paz"/>
+                        <x-input-error for="title"/>
                     </div>
                     <div>
                         <x-label for="author" value="{{ __('Autor') }}"/>
                         <x-input wire:model="author" id="author" placeholder="Liev Tostoi"/>
+                        <x-input-error for="author"/>
                     </div>
                     <div>
-                        <x-label for="gender" value="{{ __('Gênero do Autor') }}"/>
-                        <x-select wire:model="format" id="gender">
+                        <x-label for="gender_author" value="{{ __('Gênero do Autor') }}"/>
+                        <x-select wire:model="gender_author" id="gender">
+                            <option class="bg-gray-400" value=" ">Selecione...</option>
                             <option class="bg-gray-400" value="male">Masculino</option>
                             <option class="bg-gray-400" value="female">Feminino</option>
                             <option class="bg-gray-400" value="other">Outro</option>
                         </x-select>
+                        <x-input-error for="gender_author"/>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4 items-center">
@@ -94,40 +98,45 @@
                 </div>
                 <div class="grid grid-cols-3 gap-4 items-center">
                     <div>
-                        <x-label for="translator" value="{{ __('Formato') }}"/>
+                        <x-label for="format" value="{{ __('Formato') }}"/>
                         <x-select wire:model="format" id="format">
-                            <option class="bg-gray-400" value="Físico">Físico</option>
-                            <option class="bg-gray-400" value="Digital">Digital</option>
+                            <option class="bg-gray-400" value=" ">Selecione...</option>
+                            <option class="bg-gray-400" value="basic">Físico</option>
+                            <option class="bg-gray-400" value="ebook">Digital</option>
                             <option class="bg-gray-400" value="audiobook">Audiobook</option>
                         </x-select>
+                        <x-input-error for="format"/>
                     </div>
                     <div>
-                        <x-label for="translator" value="{{ __('Gênero Literario') }}"/>
-                        <x-select wire:model="format" id="format">
-                            <option class="bg-gray-400" value="">
+                        <x-label for="gender_literary" value="{{ __('Gênero Literario') }}"/>
+                        <x-select wire:model="gender_literary" id="format">
+                            <option class="bg-gray-400" value=" ">
+                                Selecionar...
+                            </option>
+                            <option class="bg-gray-400" value="romance">
                                 Romance
                             </option>
-                            <option class="bg-gray-400" value="Digital">
+                            <option class="bg-gray-400" value="fiction">
                                 Ficção
                             </option>
-                            <option class="bg-gray-400" value="audiobook">
+                            <option class="bg-gray-400" value="not-fiction">
                                 Não Ficção
                             </option>
-                            <option class="bg-gray-400" value="audiobook">
+                            <option class="bg-gray-400" value="utopia">
                                 Utopia/Distopia
                             </option>
-                            <option class="bg-gray-400" value="audiobook">
+                            <option class="bg-gray-400" value="other">
                                 Outro
                             </option>
                         </x-select>
                     </div>
                     <div>
-                        <x-label for="pages" value="{{ __('Nota') }}"/>
+                        <x-label for="note" value="{{ __('Nota') }}"/>
                         <x-input wire:model="note" id="note" type="number" placeholder="10"/>
                     </div>
                 </div>
 
-            </div>
+            </form>
         </x-slot>
 
         <x-slot name="footer">
@@ -135,7 +144,7 @@
                 {{ __('Cancelar') }}
             </x-secondary-button>
 
-            <x-button class="ml-2" mode="delete">
+            <x-button class="ml-2" wire:click="createReading">
                 {{ __('Salvar') }}
             </x-button>
         </x-slot>
