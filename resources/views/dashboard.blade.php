@@ -23,7 +23,7 @@
                         <x-slot:title>
                             Card title
                         </x-slot>
-                        
+
                         <x-slot:body>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         </x-slot>
@@ -36,37 +36,7 @@
                 </div>
                 <div class="border-separate pb-4"></div>
                 <div class="card-footer pt-4 border-t border-gray-300">
-                    <div class="flex items-center gap-3">
-
-                        <x-secondary-button>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                 fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="lucide lucide-plus mr-2">
-                                <path d="M5 12h14"/>
-                                <path d="M12 5v14"/>
-                            </svg>
-                            Adicionar Tag
-                        </x-secondary-button>
-                        <x-secondary-button class="flex w-fite h-full">
-                            <div
-                                class="w-2 h-2 mr-2 bg-green-600 rounded-full"
-                            ></div>
-                            Add Tag
-                        </x-secondary-button>
-                        <x-secondary-button class="flex w-fite h-full">
-                            <div
-                                class="w-2 h-2 mr-2 bg-yellow-600 rounded-full"
-                            ></div>
-                            Add Tag
-                        </x-secondary-button>
-                        <x-secondary-button class="flex w-fite h-full">
-                            <div
-                                class="w-2 h-2 mr-2 bg-blue-600 rounded-full"
-                            ></div>
-                            Add Tag
-                        </x-secondary-button>
-                    </div>
+                    <livewire:tags/>
                 </div>
             </div>
         </div>
