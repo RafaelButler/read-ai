@@ -5,6 +5,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
+beforeEach(function () {
+    $user = User::factory()->create();
+    auth()->login($user);
+});
+
 test('if router to dashboard is ok', function () {
     $user = User::factory()->create();
     $response = $this->actingAs($user)->get('/dashboard');
@@ -22,8 +27,6 @@ test('if required fields is in component', function () {
 });
 
 test('when called created method, validate required fields and if its saved', function () {
-    $user = User::factory()->create();
-    auth()->login($user);
 
     Livewire::test('create-reading')
         ->set('title', 'War and Peace')
@@ -43,9 +46,6 @@ test('when called created method, validate required fields and if its saved', fu
 });
 
 test('if the fields not required when created, is in database', function () {
-    $user = User::factory()->create();
-    auth()->login($user);
-
     Livewire::test('create-reading')
         ->set('title', 'War and Peace')
         ->set('author', 'Leo Tolstoy')
@@ -75,5 +75,15 @@ test('if the fields not required when created, is in database', function () {
         'gender_author' => 'male',
         'note' => 5,
     ]);
-    
+
+});
+
+test('should get error if note is greater than 10', function () {
+    Livewire::test('create-reading')
+        ->set('title', 'War and Peace')
+        ->set('author', 'Leo Tolstoy')
+        ->set('format', 'AudioBook')
+        ->set('note', 11)
+        ->call('createReading')
+        ->assertHasErrors(['note']);
 });

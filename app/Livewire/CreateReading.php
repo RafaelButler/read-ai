@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use Carbon\Carbon;
+use App\Models\Reading;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
@@ -10,30 +10,28 @@ use Livewire\Component;
 
 class CreateReading extends Component
 {
+    public Reading $readingEdit;
     public bool $showAddModal = false;
     public bool $showDeleteModal = false;
+    public bool $showEditModal = false;
     public int $reading_to_delete;
 
     public string $title = '';
     public string $author = '';
     public string $gender_author = '';
-    public int $pages = 0;
+    public int $pages;
     public string $publisher = '';
     public string $translator = '';
     public string $country = '';
-    public int $year = 0;
+    public int $year;
     public string $month = '';
     public string $format = '';
     public string $gender_literary = '';
-    public int $note = 5;
-
-    public function mount(): void
-    {
-        $this->year = Carbon::now()->year;
-    }
+    public int $note;
 
     public function showModal(): void
     {
+        $this->reset();
         $this->showAddModal = true;
     }
 
@@ -44,9 +42,10 @@ class CreateReading extends Component
             'author' => 'required|string',
             'gender_author' => 'required|string',
             'format' => 'required|string',
+            'note' => 'integer|min:0|max:10'
         ]);
 
-        auth()->user()->readings()->create([
+        auth()->user()->readings()->firstOrCreate([
             'title' => $this->title,
             'author' => $this->author,
             'format' => $this->format,
@@ -61,8 +60,8 @@ class CreateReading extends Component
             'note' => $this->note,
         ]);
 
-        $this->reset();
         $this->close();
+        $this->reset();
     }
 
     public function close(): void
@@ -74,7 +73,54 @@ class CreateReading extends Component
     {
         $this->showDeleteModal = true;
         $this->reading_to_delete = $readingId;
+    }
 
+
+    public function editModal(Reading $reading): void
+    {
+        $this->showEditModal = true;
+        $this->readingEdit = $reading;
+        $this->title = $reading->title;
+        $this->author = $reading->author;
+        $this->gender_author = $reading->gender_author;
+        $this->pages = $reading->pages;
+        $this->publisher = $reading->publisher;
+        $this->translator = $reading->translator;
+        $this->country = $reading->country;
+        $this->year = $reading->year;
+        $this->month = $reading->month;
+        $this->format = $reading->format;
+        $this->gender_literary = $reading->gender_literary;
+        $this->note = $reading->note;
+    }
+
+    public function updateReading(): void
+    {
+        $this->validate([
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'gender_author' => 'required|string',
+            'format' => 'required|string',
+            'note' => 'integer|min:0|max:10',
+        ]);
+
+        $this->readingEdit->update([
+            'title' => $this->title,
+            'author' => $this->author,
+            'format' => $this->format,
+            'gender_author' => $this->gender_author,
+            'pages' => $this->pages,
+            'publisher' => $this->publisher,
+            'translator' => $this->translator,
+            'country' => $this->country,
+            'year' => $this->year,
+            'month' => $this->month,
+            'gender_literary' => $this->gender_literary,
+            'note' => $this->note,
+        ]);
+
+        $this->showEditModal = false;
+        $this->reset();
     }
 
     public function deleteReading(): void
