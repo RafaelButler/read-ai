@@ -150,4 +150,24 @@
         </x-slot>
 
     </x-dialog-modal>
+
+    <x-confirmation-modal wire:model="showDeleteModal">
+        <x-slot name="title">
+            {{ __('Deletar Leitura') }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('Você tem certeza que deseja deletar esta leitura?') }}
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$set('showDeleteModal', false)">
+                {{ __('Cancelar') }}
+            </x-secondary-button>
+
+            <x-danger-button class="ml-2" wire:click="deleteReading">
+                {{ __('Deletar') }}
+            </x-danger-button>
+        </x-slot>
+    </x-confirmation-modal>
 </div>

@@ -11,6 +11,8 @@ use Livewire\Component;
 class CreateReading extends Component
 {
     public bool $showAddModal = false;
+    public bool $showDeleteModal = false;
+    public int $reading_to_delete;
 
     public string $title = '';
     public string $author = '';
@@ -66,6 +68,19 @@ class CreateReading extends Component
     public function close(): void
     {
         $this->showAddModal = false;
+    }
+
+    public function deleteModal(int $readingId): void
+    {
+        $this->showDeleteModal = true;
+        $this->reading_to_delete = $readingId;
+
+    }
+
+    public function deleteReading(): void
+    {
+        auth()->user()->readings()->where('id', $this->reading_to_delete)->delete();
+        $this->showDeleteModal = false;
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View

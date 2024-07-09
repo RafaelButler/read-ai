@@ -38,7 +38,7 @@
     </thead>
     <tbody>
     @foreach($readings as $reading)
-        <tr class="bg-transparent border-b dark:bg-gray-800 dark:border-gray-700">
+        <tr class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
                 <div class="flex items-center">
@@ -144,7 +144,7 @@
                     </x-slot:trigger>
 
                     <x-slot name="content">
-                        <x-dropdown-link class="flex items-center gap-1" href="#">
+                        <x-dropdown-link class="text-xs flex items-center gap-1" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -155,7 +155,7 @@
                             </svg>
                             Editar
                         </x-dropdown-link>
-                        <x-dropdown-link class="flex items-center gap-1" href="#">
+                        <x-dropdown-link class="text-xs flex items-center gap-1" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -167,8 +167,10 @@
                             </svg>
                             Recomendacoes
                         </x-dropdown-link>
-                        <x-dropdown-link class="flex items-center gap-1 hover:bg-red-200 rounded-md hover:text-red-500"
-                                         href="#">
+                        <x-dropdown-link
+                            wire:click="deleteModal({{ $reading->id }})"
+                            class="text-xs flex items-center gap-1 hover:bg-red-200 rounded-md hover:text-red-500"
+                            href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -179,7 +181,6 @@
                             </svg>
                             Excluir
                         </x-dropdown-link>
-
                     </x-slot>
                 </x-dropdown>
             </td>
@@ -187,3 +188,10 @@
     @endforeach
     </tbody>
 </table>
+@if(count($readings) === 0)
+    <div class="text-center mt-4 p-4">
+            <span class="text-center text-xs text-gray-400 mt-4">
+                    Não ha registros de leituras
+            </span>
+    </div>
+@endif
