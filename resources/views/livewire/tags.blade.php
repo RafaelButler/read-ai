@@ -18,7 +18,7 @@
                     <div class="w-3 h-3 rounded-full" :style="'background-color: ' + '{{ $color }}'">
                     </div>
                     <x-input
-                        class="bg-transparent w-[5.3rem] h-4 py-1 focus:ring-gray-50 focus:border-gray-50 border-0 border-x-0"
+                        class="bg-transparent w-[4.5rem] h-4 py-1 focus:ring-gray-50 focus:border-gray-50 border-0 border-x-0"
                         type="text"
                         x-on:blur="$wire.saveTag()"
                         x-on:keyup.enter="$wire.saveTag()"

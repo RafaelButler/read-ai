@@ -132,7 +132,7 @@ class CreateReading extends Component
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.create-reading', [
-            'readings' => auth()->user()->readings()->get()
+            'readings' => auth()->user()->readings()->paginate(10)
         ]);
     }
 }

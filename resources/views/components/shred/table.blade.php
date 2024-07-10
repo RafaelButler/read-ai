@@ -189,6 +189,11 @@
     @endforeach
     </tbody>
 </table>
+{{-- Customize fonts of links paginate --}}
+<div class="custom-pagination mt-4">
+    {{ $readings->links('pagination') }}
+</div>
+
 @if(count($readings) === 0)
     <div class="text-center mt-4 p-4">
             <span class="text-center text-xs text-gray-400 mt-4">
