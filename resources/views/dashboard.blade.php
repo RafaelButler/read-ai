@@ -5,7 +5,7 @@
                 <livewire:create-reading/>
             </div>
 
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-title p-4 border-b border-gray-300">
                     <h2 class="text-lg text-gray-900 dark:text-gray-400 font-bold">Anotações</h2>
                     <p>

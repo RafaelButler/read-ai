@@ -128,7 +128,7 @@
                         <span class="text-yellow-500">Audiobook</span>
                         @break
                     @default
-                        <span class="text-gray-500">Outro</span>
+                        <span class="text-gray-800">Outro</span>
                 @endswitch
             </td>
             <td class="px-6 py-4">
