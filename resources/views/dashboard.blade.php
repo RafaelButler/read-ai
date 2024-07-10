@@ -9,19 +9,41 @@
                 <div class="card-title p-4 border-b border-gray-300">
                     <h2 class="text-lg text-gray-900 dark:text-gray-400 font-bold">Anotações</h2>
                     <p>
-                        <span class="text-gray-600">Criado em</span>
-                        <span class="text-gray-400">12/12/2021</span>
+                        <span class="text-gray-600"></span>
                     </p>
                 </div>
 
                 <div class="card-body flex flex-col gap-3 py-4 text-gray-600 ">
+                    <div class="text-right">
+                        <x-secondary-button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="lucide lucide-list-filte mr-1">
+                                <path d="M3 6h18"/>
+                                <path d="M7 12h10"/>
+                                <path d="M10 18h4"/>
+                            </svg>
+                            Filtrar
+                        </x-secondary-button>
+                        <x-button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="lucide lucide-plus mr-1">
+                                <path d="M5 12h14"/>
+                                <path d="M12 5v14"/>
+                            </svg>
+                            Nova anotação
+                        </x-button>
+                    </div>
                     {{--                    <p class="text-gray-500">--}}
                     {{--                        Nenhum anotação--}}
                     {{--                    </p>--}}
 
                     <x-shared.card>
                         <x-slot:title>
-                            Card title
+                            12/12/2021 - Rafael Butler
                         </x-slot>
 
                         <x-slot:body>
