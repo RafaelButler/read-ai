@@ -11,7 +11,7 @@
     </p>
 
     <div class="flex items-center gap-2 mt-4">
-        <p class="text-xs font-medium text-blue-500">
+        <p class="text-xs font-medium text-indigo-500">
             Comentario (0)
         </p>
 

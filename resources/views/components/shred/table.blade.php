@@ -144,8 +144,8 @@
                     </x-slot:trigger>
 
                     <x-slot name="content">
-                        <x-dropdown-link wire:click="editModal({{ $reading->id }})"
-                                         class="text-xs flex items-center gap-1" href="#">
+                        <button wire:click.prevent="editModal({{ $reading->id }})"
+                                class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 text-sm flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -155,7 +155,7 @@
                                     d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>
                             </svg>
                             Editar
-                        </x-dropdown-link>
+                        </button>
                         <x-dropdown-link class="text-xs flex items-center gap-1" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
@@ -169,7 +169,7 @@
                             Recomendacoes
                         </x-dropdown-link>
                         <x-dropdown-link
-                            wire:click="deleteModal({{ $reading->id }})"
+                            wire:click.prevent="deleteModal({{ $reading->id }})"
                             class="text-xs flex items-center gap-1 hover:bg-red-200 rounded-md hover:text-red-500"
                             href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
@@ -189,11 +189,6 @@
     @endforeach
     </tbody>
 </table>
-{{-- Customize fonts of links paginate --}}
-<div class="custom-pagination mt-4">
-    {{ $readings->links('pagination') }}
-</div>
-
 @if(count($readings) === 0)
     <div class="text-center mt-4 p-4">
             <span class="text-center text-xs text-gray-400 mt-4">

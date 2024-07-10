@@ -33,6 +33,10 @@
 
         <div class="relative ">
             <x-shred.table :readings="$readings"/>
+            {{-- Customize fonts of links paginate --}}
+            <div class="custom-pagination mt-4">
+                {{ $readings->links('components.paginator') }}
+            </div>
         </div>
 
     </div>
@@ -68,11 +72,11 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-secondary-button wire:click="$set('showAddModal', false)">
+            <x-secondary-button wire:click.prevent="$set('showAddModal', false)">
                 {{ __('Cancelar') }}
             </x-secondary-button>
 
-            <x-button class="ml-2" wire:click="updateReading">
+            <x-button class="ml-2" wire:click.prevent="updateReading">
                 {{ __('Salvar') }}
             </x-button>
         </x-slot>
@@ -89,11 +93,11 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-secondary-button wire:click="$set('showDeleteModal', false)">
+            <x-secondary-button wire:click.prevent="$set('showDeleteModal', false)">
                 {{ __('Cancelar') }}
             </x-secondary-button>
 
-            <x-danger-button class="ml-2" wire:click="deleteReading">
+            <x-danger-button class="ml-2" wire:click.prevent="deleteReading">
                 {{ __('Deletar') }}
             </x-danger-button>
         </x-slot>

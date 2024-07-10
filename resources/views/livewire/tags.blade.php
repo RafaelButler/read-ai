@@ -43,7 +43,8 @@
                         </div>
                         @if($editTagId === $tag->id)
                             <x-input
-                                class="bg-transparent w-[5.3rem] text-xs h-4 py-1 focus:boring-gray-50 dark:focus:boring-gray-50 focus:ring-gray-50 dark:focus:ring-gray-50 border-0 border-x-0"
+                                class="bg-transparent text-xs h-4 w-[4.5rem] py-1 focus:boring-gray-50 dark:focus:boring-gray-50 focus:ring-gray-50 dark:focus:ring-gray-50 border-0 border-x-0"
+                                style="width: 4.5rem;"
                                 type="text"
                                 x-on:blur="$wire.updateTagName('{{ $tag->id }}')"
                                 x-on:click.away="$wire.updateTagName('{{ $tag->id }}')"

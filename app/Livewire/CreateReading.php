@@ -7,9 +7,13 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class CreateReading extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+
     public Reading $readingEdit;
     public bool $showAddModal = false;
     public bool $showDeleteModal = false;
@@ -132,7 +136,7 @@ class CreateReading extends Component
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.create-reading', [
-            'readings' => auth()->user()->readings()->paginate(10)
+            'readings' => auth()->user()->readings()->paginate(5)
         ]);
     }
 }
