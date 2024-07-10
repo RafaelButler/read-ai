@@ -145,7 +145,7 @@
 
                     <x-slot name="content">
                         <button wire:click.prevent="editModal({{ $reading->id }})"
-                                class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 text-sm flex items-center gap-1">
+                                class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -168,10 +168,10 @@
                             </svg>
                             Recomendacoes
                         </x-dropdown-link>
-                        <x-dropdown-link
+                        <button
                             wire:click.prevent="deleteModal({{ $reading->id }})"
-                            class="text-xs flex items-center gap-1 hover:bg-red-200 rounded-md hover:text-red-500"
-                            href="#">
+                            class="w-full text-gray-800 text-xs flex items-center gap-1 px-4 py-2 hover:bg-red-200 rounded-md hover:text-red-500"
+                        >
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -181,7 +181,7 @@
                                 <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
                             </svg>
                             Excluir
-                        </x-dropdown-link>
+                        </button>
                     </x-slot>
                 </x-dropdown>
             </td>
