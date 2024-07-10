@@ -27,7 +27,7 @@ class ReadingFactory extends Factory
             'month' => $this->faker->word(),
             'format' => $this->faker->word(),
             'gender_literary' => $this->faker->word(),
-            'note' => $this->faker->randomNumber(),
+            'note' => $this->faker->numberBetween(0, 10),
             'user_id' => User::factory(),
         ];
     }
