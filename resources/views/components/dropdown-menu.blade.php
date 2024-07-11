@@ -3,7 +3,7 @@
 @php
     switch ($align) {
         case 'left':
-            $alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0';
+            $alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0 left-[-12rem]';
             break;
         case 'top':
             $alignmentClasses = 'origin-top';

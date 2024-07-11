@@ -41,20 +41,7 @@
                     {{--                        Nenhum anotação--}}
                     {{--                    </p>--}}
 
-                    <x-shared.card>
-                        <x-slot:title>
-                            12/12/2021 - Rafael Butler
-                        </x-slot>
-
-                        <x-slot:body>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        </x-slot>
-
-                        <x-slot:footer
-                        >
-                            Livro: O iluminado
-                        </x-slot>
-                    </x-shared.card>
+                    <livewire:notes/>
                 </div>
                 <div class="border-separate pb-4"></div>
                 <div class="card-footer pt-4 border-t border-gray-300">
