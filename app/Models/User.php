@@ -51,9 +51,20 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    /**
+     * Get the readings for the user.
+     */
     public function readings(): HasMany
     {
         return $this->hasMany(Reading::class);
+    }
+
+    /**
+     * Get the notes for the user.
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class);
     }
 
     /**

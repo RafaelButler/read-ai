@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Reading;
+use App\Models\Comment;
+use App\Models\Note;
 use Illuminate\Console\Command;
 
 class HandleTagsCommand extends Command
@@ -14,9 +15,14 @@ class HandleTagsCommand extends Command
     public function handle(): void
     {
         $this->info('Handle tags');
-        Reading::factory()->count(10)->create([
-            'user_id' => 1,
-        ]);
+
+        Note::factory()->count(10)->create();
+
+        Comment::factory()->count(10)->create();
+
+//        Reading::factory()->count(10)->create([
+//            'user_id' => 1,
+//        ]);
 
 //        Tag::factory()->count(10)->create();
     }

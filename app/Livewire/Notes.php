@@ -11,6 +11,12 @@ class Notes extends Component
 {
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
-        return view('livewire.notes');
+        return view('livewire.notes', [
+            'notes' => auth()->user()
+                ->notes()
+                ->with('comments', 'reading')
+                ->orderBy('date', 'desc')
+                ->get()->sortByDesc('created_at'),
+        ]);
     }
 }
