@@ -1,6 +1,7 @@
 <x-app-layout>
     <div class="">
-        <div class="grid items-start flex-1 gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
+        <div
+            class="grid md:grid-cols-[1fr_250px] lg:grid-cols-3 items-start flex-1 gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 ">
             <div class="lg:col-span-2">
                 <livewire:create-reading/>
             </div>
