@@ -48,12 +48,6 @@
     </p>
 
     <div class="flex items-center gap-2 mt-2">
-        <p class="text-xs font-medium text-indigo-500">
-            Comentario (0)
-        </p>
-
-        <p class="text-xs text-foreground">
-            {{ $footer }}
-        </p>
+        {{ $footer }}
     </div>
 </div>
