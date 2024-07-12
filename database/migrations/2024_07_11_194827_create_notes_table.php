@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('reading_id');
+            $table->foreignId('reading_id')->constrained()->cascadeOnDelete();
             $table->dateTime('created_date')->default(now());
             $table->timestamps();
         });
