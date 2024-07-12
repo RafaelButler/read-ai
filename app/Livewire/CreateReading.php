@@ -8,7 +8,6 @@ use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
-use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -36,6 +35,14 @@ class CreateReading extends Component
     public string $gender_literary = '';
     public int $note;
     protected $listeners = ['tagChanged' => '$refresh'];
+
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
+    {
+        return view('livewire.create-reading', [
+            'readings' => auth()->user()->readings()->with('readingTags')->paginate(10),
+            'tags' => auth()->user()->tags()->get(),
+        ]);
+    }
 
     public function showModal(): void
     {
@@ -82,7 +89,6 @@ class CreateReading extends Component
         $this->showDeleteModal = true;
         $this->reading_to_delete = $readingId;
     }
-
 
     public function editModal(Reading $reading): void
     {
@@ -145,14 +151,5 @@ class CreateReading extends Component
         ]);
 
         $this->dispatch('tagChanged');
-    }
-
-    #[On('tagChanged')]
-    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
-    {
-        return view('livewire.create-reading', [
-            'readings' => auth()->user()->readings()->with('readingTags')->paginate(10),
-            'tags' => auth()->user()->tags()->get(),
-        ]);
     }
 }
