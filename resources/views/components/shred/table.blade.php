@@ -41,7 +41,7 @@
         <tr wire:key="{{ $reading->id }}" class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
-                <div class="flex gap-1 mb-1">
+                <div class="flex flex-wrap gap-1 mb-1">
                     @foreach($reading->readingTags as $readingTags)
                         <div
                             class="w-3 h-3 rounded-full"
