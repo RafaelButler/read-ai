@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Reading;
+use App\Models\ReadingTag;
 use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -136,15 +137,16 @@ class CreateReading extends Component
 
     public function addTag(Reading $reading, Tag $tag): void
     {
-        $tag->update([
+        ReadingTag::firstOrCreate([
             'reading_id' => $reading->id,
+            'tag_id' => $tag->id,
         ]);
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.create-reading', [
-            'readings' => auth()->user()->readings()->with('tags')->paginate(10),
+            'readings' => auth()->user()->readings()->with('readingTags')->paginate(10),
             'tags' => auth()->user()->tags()->get(),
         ]);
     }

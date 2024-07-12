@@ -6,15 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Tag extends Model
+class ReadingTag extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'reading_id',
-        'user_id',
-        'name',
-        'color',
+        'tag_id',
     ];
 
     public function reading(): BelongsTo
@@ -22,13 +20,8 @@ class Tag extends Model
         return $this->belongsTo(Reading::class);
     }
 
-    public function user(): BelongsTo
+    public function tag(): BelongsTo
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function readingTags(): HasMany
-    {
-        return $this->hasMany(ReadingTag::class);
+        return $this->belongsTo(Tag::class);
     }
 }

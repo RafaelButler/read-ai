@@ -42,10 +42,10 @@
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
                 <div class="flex gap-1 mb-1">
-                    @foreach($reading->tags as $tag)
+                    @foreach($reading->readingTags as $readingTags)
                         <div
                             class="w-3 h-3 rounded-full"
-                            :style="'background-color: ' + '{{ $tag->color }}'"
+                            :style="'background-color: ' + '{{ $readingTags->tag->color }}'"
                         >
                         </div>
                     @endforeach
