@@ -18,13 +18,14 @@
                     <div class="w-3 h-3 rounded-full" :style="'background-color: ' + '{{ $color }}'">
                     </div>
                     <x-input
-                        class="bg-transparent w-[4.5rem] h-4 py-1 focus:ring-gray-50 focus:border-gray-50 border-0 border-x-0"
+                        class="bg-transparent w-[4.5rem] h-5 py-1 focus:ring-gray-50 focus:border-gray-50 border-0 border-x-0"
+                        style="width: 4.5rem;"
                         type="text"
                         x-on:blur="$wire.saveTag()"
                         x-on:keyup.enter="$wire.saveTag()"
                         wire:model="name"
                         autofocus
-                        placeholder="Tag..."/>
+                        placeholder="Digite..."/>
                 </div>
             </div>
         @endif
@@ -35,7 +36,7 @@
             <x-dropdown align="left">
                 <x-slot:trigger>
                     <div
-                        class="flex bg-gray-50 hover:bg-white px-3 text-xs w-fit rounded-lg cursor-pointer items-center gap-4">
+                        class="flex bg-gray-50 hover:bg-white px-3 py-1 text-xs w-fit rounded-lg cursor-pointer items-center gap-4">
                         <div
                             class="w-3 h-3 rounded-full"
                             :style="'background-color: ' + '{{ $tag->color }}'"
@@ -43,7 +44,7 @@
                         </div>
                         @if($editTagId === $tag->id)
                             <x-input
-                                class="bg-transparent text-xs h-4 w-[4.5rem] py-1 focus:boring-gray-50 dark:focus:boring-gray-50 focus:ring-gray-50 dark:focus:ring-gray-50 border-0 border-x-0"
+                                class="bg-transparent text-xs h-5 w-[4.5rem] py-1 focus:boring-gray-50 dark:focus:boring-gray-50 focus:ring-gray-50 dark:focus:ring-gray-50 border-0 border-x-0"
                                 style="width: 4.5rem;"
                                 type="text"
                                 x-on:blur="$wire.updateTagName('{{ $tag->id }}')"

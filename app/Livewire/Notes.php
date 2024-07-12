@@ -74,4 +74,9 @@ class Notes extends Component
         })->toArray();
         $this->showModal = true;
     }
+
+    public function deleteNote(Note $note): void
+    {
+        $note->delete();
+    }
 }
