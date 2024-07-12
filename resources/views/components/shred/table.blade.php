@@ -49,13 +49,13 @@
             <td class="hidden 2xl:table-cell px-6 py-4">
                 @switch($reading->gender_author)
                     @case('male')
-                        <span class="text-orange-500">Masculino</span>
+                        <span>Masculino</span>
                         @break
                     @case('female')
-                        <span class="text-pink-500">Feminino</span>
+                        <span>Feminino</span>
                         @break
                     @default
-                        <span class="text-gray-500">Outro</span>
+                        <span>Outro</span>
                 @endswitch
             </td>
             <td class="hidden 2xl:table-cell px-6 py-4">
