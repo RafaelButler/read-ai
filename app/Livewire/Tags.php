@@ -14,7 +14,6 @@ class Tags extends Component
     public bool $showAddTag = false;
     public bool $showDropdown = false;
     public $editTagId = null;
-
     public array $colors = [
         'green',
         'blue',
@@ -27,7 +26,6 @@ class Tags extends Component
         'orange',
         'teal',
     ];
-
     public string $name = '';
     public string $color = 'green';
 
@@ -59,10 +57,9 @@ class Tags extends Component
 
         if ($tag->exists()) {
             $this->reset();
-            return;
         }
 
-        $this->dispatch('tagChanged')->to(CreateReading::class);
+        $this->dispatch('tagChanged');
     }
 
     public function editTag(int $tagId): void
@@ -91,10 +88,12 @@ class Tags extends Component
         ]);
 
         $this->reset();
+        $this->dispatch('tagChanged');
     }
 
     public function removeTag(Tag $tag): void
     {
         $tag->delete();
+        $this->dispatch('tagChanged');
     }
 }

@@ -107,3 +107,14 @@
         @endforeach
     </div>
 </div>
+
+
+@script
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('tagChanged', () => {
+            alert('Tag changed')
+        });
+    });
+</script>
+@endscript
