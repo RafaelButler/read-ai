@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class Notes extends Component
 {
+    public $showModal = false;
+
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.notes', [
@@ -18,5 +20,10 @@ class Notes extends Component
                 ->orderBy('date', 'desc')
                 ->get()->sortByDesc('created_at'),
         ]);
+    }
+
+    public function showModalAdd(): void
+    {
+        $this->showModal = true;
     }
 }
