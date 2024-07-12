@@ -11,6 +11,11 @@ use Livewire\Component;
 class Notes extends Component
 {
     public bool $showModal = false;
+
+    public $reading;
+
+    public $showAdd = false;
+
     public string $comment = '';
     public $selected;
 
@@ -25,7 +30,22 @@ class Notes extends Component
                 ->with('reading')
                 ->orderBy('date', 'desc')
                 ->get()->sortByDesc('created_at'),
+            'readings' => auth()->user()->readings()->get()
         ]);
+    }
+
+    public function crateNote(): void
+    {
+        $this->validate([
+            'reading' => 'required',
+        ]);
+
+        auth()->user()->notes()->firstOrCreate([
+            'reading_id' => $this->reading,
+        ]);
+
+        $this->reading = '';
+        $this->showAdd = false;
     }
 
     public function createComment(): void
@@ -75,8 +95,16 @@ class Notes extends Component
         $this->showModal = true;
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function deleteNote(Note $note): void
     {
-        $note->delete();
+        $note->deleteOrFail();
+    }
+
+    public function showAddFormNotes(): void
+    {
+        $this->showAdd = !$this->showAdd;
     }
 }

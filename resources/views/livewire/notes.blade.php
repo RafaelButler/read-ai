@@ -3,6 +3,56 @@
         'h-[18rem]' => count($comments) > 3,
     ])
 >
+    <div class="text-right">
+        <x-secondary-button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-list-filte mr-1">
+                <path d="M3 6h18"/>
+                <path d="M7 12h10"/>
+                <path d="M10 18h4"/>
+            </svg>
+            Filtrar
+        </x-secondary-button>
+        <x-button wire:click="showAddFormNotes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-plus mr-1">
+                <path d="M5 12h14"/>
+                <path d="M12 5v14"/>
+            </svg>
+            Nova anotação
+        </x-button>
+    </div>
+
+    @if($showAdd)
+        <div class="px-2 mb-4">
+            <div class="mb-4">
+                <x-label for="readings" value="{{ __('Leituras') }}"/>
+                <x-select wire:model="reading" class="w-full mt-2 bg-transparent" id="readings">
+                    <option class="bg-gray-400" value=" ">Selecione...</option>
+                    @foreach($readings as $reading)
+                        <option class="bg-gray-400" wire:key="{{ $reading->id }}"
+                                value="{{ $reading->id }}">{{ $reading->title }}</option>
+                    @endforeach
+                </x-select>
+                <x-input-error for="reading"/>
+            </div>
+            <x-secondary-button wire:click="showAddFormNotes">Fechar</x-secondary-button>
+            <x-button wire:click="crateNote">Salvar</x-button>
+        </div>
+        <div class="border-separate pb-4"></div>
+
+    @endif
+
+    @if(count($notes) <= 0)
+        <p class="text-sm text-gray-500">
+            Nenhum anotação
+        </p>
+    @endif
+
     @foreach($notes as $note)
         <x-shared.card>
             <x-slot:title>
