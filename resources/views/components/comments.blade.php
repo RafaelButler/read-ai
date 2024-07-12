@@ -25,6 +25,7 @@
                     </x-slot>
                     <x-slot name="content">
                         <button
+                            wire:click="selectCommentEdit({{ $comment['id'] }})"
                             class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                  viewBox="0 0 24 24"

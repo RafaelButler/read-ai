@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use App\Models\Note;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -11,11 +12,9 @@ use Livewire\Component;
 class Notes extends Component
 {
     public bool $showModal = false;
-
     public $reading;
-
+    public $selectedComment;
     public $showAdd = false;
-
     public string $comment = '';
     public $selected;
 
@@ -67,6 +66,34 @@ class Notes extends Component
             'user' => $comment->user->name,
             'created_at' => $comment->created_at->format('H:i'),
         ];
+    }
+
+    public function selectCommentEdit(Comment $comment): void
+    {
+        $this->selectedComment = $comment;
+        $this->comment = $comment->text;
+    }
+
+    public function updateComment(): void
+    {
+        $this->validate([
+            'comment' => 'required|min:3',
+        ]);
+
+        $this->selectedComment->update([
+            'text' => $this->comment,
+        ]);
+
+        /* Update in array comments */
+        $this->comments = array_map(function ($comment) {
+            if ($comment['id'] === $this->selectedComment->id) {
+                $comment['text'] = $this->comment;
+            }
+            return $comment;
+        }, $this->comments);
+
+        $this->comment = '';
+        $this->selectedComment = null;
     }
 
     public function deleteComment(int $commentId): void

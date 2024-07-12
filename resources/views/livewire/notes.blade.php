@@ -138,14 +138,25 @@
                     <x-input-error for="comment" class="mt-2"/>
                 </div>
 
-                <button class="bg-indigo-500 text-white p-3 rounded-full" wire:click.prevent="createComment">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="lucide lucide-send-horizontal">
-                        <path d="m3 3 3 9-3 9 19-9Z"/>
-                        <path d="M6 12h16"/>
-                    </svg>
-                </button>
+                @if(!$selectedComment)
+                    <button class="bg-indigo-500 text-white p-3 rounded-full" wire:click.prevent="createComment">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="lucide lucide-send-horizontal">
+                            <path d="m3 3 3 9-3 9 19-9Z"/>
+                            <path d="M6 12h16"/>
+                        </svg>
+                    </button>
+                @else
+                    <button class="bg-indigo-500 text-white p-3 rounded-full" wire:click.prevent="updateComment">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="lucide lucide-send-horizontal">
+                            <path d="m3 3 3 9-3 9 19-9Z"/>
+                            <path d="M6 12h16"/>
+                        </svg>
+                    </button>
+                @endif
             </div>
         </x-slot>
     </x-dialog-modal>
