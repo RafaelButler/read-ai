@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('reading_id');
-            $table->dateTime('date')->default(now());
+            $table->dateTime('created_date')->default(now());
             $table->timestamps();
         });
     }

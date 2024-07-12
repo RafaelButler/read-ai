@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('text');
             $table->foreignId('note_id')->constrained()->cascadeOnDelete();
+            $table->dateTime('created_date')->default(now());
             $table->timestamps();
         });
     }

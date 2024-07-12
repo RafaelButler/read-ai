@@ -14,7 +14,7 @@ class Note extends Model
     protected $fillable = [
         'user_id',
         'reading_id',
-        'date',
+        'created_date',
     ];
 
     public function user(): BelongsTo

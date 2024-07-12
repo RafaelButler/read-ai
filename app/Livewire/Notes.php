@@ -116,7 +116,7 @@ class Notes extends Component
                 'id' => $comment->id,
                 'text' => $comment->text,
                 'user' => $comment->user->name,
-                'created_at' => $comment->created_at->format('H:i'),
+                'created_at' => $comment->created_date->format('H:i'),
             ];
         })->toArray();
         $this->showModal = true;
