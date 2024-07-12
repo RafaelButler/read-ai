@@ -1,5 +1,5 @@
 <div
-    class="p-4 border-l h-fit bg-gray-50 rounded-lg hover:bg-white hover:cursor-pointer border-l-green-600"
+    class="p-4 border-l h-fit bg-gray-50 rounded-lg hover:bg-white border-l-green-600"
 >
 
     <div

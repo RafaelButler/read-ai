@@ -16,9 +16,15 @@ class HandleTagsCommand extends Command
     {
         $this->info('Handle tags');
 
-        Note::factory()->count(10)->create();
+        Note::factory()->create([
+            'user_id' => 1,
+            'reading_id' => 1,
+        ]);
 
-        Comment::factory()->count(10)->create();
+        Comment::factory()->count(3)->create([
+            'user_id' => 1,
+            'note_id' => 71,
+        ]);
 
 //        Reading::factory()->count(10)->create([
 //            'user_id' => 1,
