@@ -1,11 +1,15 @@
-<div class="flex flex-col h-[18rem] overflow-auto gap-2">
+<div class="flex flex-col overflow-auto gap-2"
+    @class([
+        'h-[18rem]' => count($comments) > 3,
+    ])
+>
     @foreach($notes as $note)
         <x-shared.card>
             <x-slot:title>
-                <div class="hover:cursor-pointer hover:underline"
-                     wire:click="showModalAdd('{{ $note->id }}')">
+                <button class="hover:cursor-pointer hover:underline"
+                        wire:click="showModalAdd('{{ $note->id }}')">
                     {{ $note->created_at->format('d/m/Y') }} - {{ $note->user->name }}
-                </div>
+                </button>
             </x-slot>
 
             <x-slot:body>
@@ -13,9 +17,11 @@
             </x-slot>
 
             <x-slot:footer>
-                <p class="text-xs font-medium text-indigo-500">
+                <button class="text-xs font-medium hover:underline text-indigo-500"
+                        wire:click="showModalAdd('{{ $note->id }}')"
+                >
                     Comentario ({{ $note->comments?->count() }})
-                </p>
+                </button>
                 <p class="text-xs text-foreground">
                     Livro: {{ $note->reading->title }}
                 </p>
@@ -30,7 +36,7 @@
 
         <x-slot name="content">
             @if(count($comments) <= 0)
-                <div class="text-center md:w-[38rem] text-gray-500 dark:text-gray-400">
+                <div class="text-center md:w-[40rem] text-gray-500 dark:text-gray-400">
                     Nenhum comentário encontrado.
                 </div>
             @else

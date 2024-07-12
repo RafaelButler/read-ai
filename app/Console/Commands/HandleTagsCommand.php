@@ -25,7 +25,7 @@ class HandleTagsCommand extends Command
             'user_id' => 1,
             'note_id' => 71,
         ]);
-
+    
 //        Reading::factory()->count(10)->create([
 //            'user_id' => 1,
 //        ]);
