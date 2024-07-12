@@ -59,7 +59,10 @@ class Tags extends Component
 
         if ($tag->exists()) {
             $this->reset();
+            return;
         }
+
+        $this->dispatch('tagChanged')->to(CreateReading::class);
     }
 
     public function editTag(int $tagId): void
