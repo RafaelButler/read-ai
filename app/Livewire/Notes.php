@@ -49,6 +49,16 @@ class Notes extends Component
         ];
     }
 
+    public function deleteComment(int $commentId): void
+    {
+        $comment = $this->selected->comments()->find($commentId);
+        $comment->delete();
+        /* Remove from array comments */
+        $this->comments = array_filter($this->comments, function ($comment) use ($commentId) {
+            return $comment['id'] !== $commentId;
+        });
+    }
+
     public function showModalAdd(Note $note): void
     {
         $comments = $note->comments()->get();

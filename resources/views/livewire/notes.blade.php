@@ -29,7 +29,13 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-comments :comments="$comments"/>
+            @if(count($comments) <= 0)
+                <div class="text-center md:w-[38rem] text-gray-500 dark:text-gray-400">
+                    Nenhum comentário encontrado.
+                </div>
+            @else
+                <x-comments :comments="$comments"/>
+            @endif
         </x-slot>
 
         <x-slot name="footer">
