@@ -1,8 +1,10 @@
 @props(['comments' => []])
 
-<div class="flex flex-col gap-8 bg-gray-50 rounded-lg p-4 h-[9rem] overflow-auto ">
+<div
+    class="flex flex-col gap-8 bg-gray-50 md:w-[40rem] h-[9rem] rounded-lg p-4 overflow-auto"
+>
     @foreach($comments as $comment)
-        <div class="flex flex-col justify-start gap-1">
+        <div class="flex flex-col justify-start border-t pt-4 gap-1">
             <div class="flex justify-between">
                             <span
                                 class="text-xs font-bold">{{ $comment['user'] }} - {{ $comment['created_at'] }}</span>
