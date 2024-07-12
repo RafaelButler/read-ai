@@ -34,7 +34,7 @@ class Tags extends Component
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.tags', [
-            'allTags' => Tag::all(),
+            'allTags' => auth()->user()->tags()->get(),
             'colors' => $this->colors,
         ]);
     }
@@ -53,6 +53,7 @@ class Tags extends Component
 
         $tag = Tag::firstOrCreate([
             'name' => $this->name,
+            'user_id' => auth()->id(),
             'color' => $this->color,
         ]);
 

@@ -29,16 +29,15 @@
             Adicionar
         </x-button>
     </div>
-    <div class="max-h-[38.5rem]">
 
+    <div class="max-h-[38.5rem]">
         <div class="relative ">
-            <x-shred.table :readings="$readings"/>
+            <x-shred.table :readings="$readings" :tags="$tags"/>
             {{-- Customize fonts of links paginate --}}
             <div class="custom-pagination mt-4">
                 {{ $readings->links('components.paginator') }}
             </div>
         </div>
-
     </div>
 
     <x-dialog-modal wire:model="showAddModal">

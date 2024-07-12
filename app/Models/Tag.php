@@ -12,6 +12,7 @@ class Tag extends Model
 
     protected $fillable = [
         'reading_id',
+        'user_id',
         'name',
         'color',
     ];
@@ -19,5 +20,10 @@ class Tag extends Model
     public function reading(): BelongsTo
     {
         return $this->belongsTo(Reading::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

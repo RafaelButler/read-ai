@@ -1,4 +1,4 @@
-@props(['readings' => []])
+@props(['readings' => [], 'tags' => []])
 
 <table
     class="w-full rounded-lg text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -41,6 +41,15 @@
         <tr wire:key="{{ $reading->id }}" class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
+                <div class="flex gap-1 mb-1">
+                    @foreach($reading->tags as $tag)
+                        <div
+                            class="w-3 h-3 rounded-full"
+                            :style="'background-color: ' + '{{ $tag->color }}'"
+                        >
+                        </div>
+                    @endforeach
+                </div>
                 {{ $reading->title }}
             </th>
             <td class="px-6 py-4">
@@ -190,6 +199,19 @@
                             </x-slot:trigger>
 
                             <x-slot name="content">
+                                @foreach($tags as $tag)
+                                    <button
+                                        wire:click.prevent="addTag({{ $reading->id }}, {{ $tag->id }})"
+                                        class="w-full text-xs flex items-center gap-1 px-4 py-2 hover:bg-gray-100"
+                                    >
+                                        <div
+                                            class="w-3 h-3 rounded-full"
+                                            :style="'background-color: ' + '{{ $tag->color }}'"
+                                        >
+                                        </div>
+                                        {{ $tag->name }}
+                                    </button>
+                                @endforeach
                             </x-slot>
 
                         </x-dropdown-menu>
