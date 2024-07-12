@@ -1,7 +1,7 @@
 @props(['comments' => []])
 
 <div
-    class="flex flex-col gap-8 bg-gray-50 md:w-[40rem] h-[9rem] rounded-lg p-4 overflow-auto"
+    class="flex flex-col gap-8 bg-gray-50 md:w-[40rem] h-[14rem] rounded-lg p-4 overflow-auto"
 >
     @foreach($comments as $comment)
         <div class="flex flex-col justify-start border-t pt-4 gap-1">
@@ -58,7 +58,8 @@
                 </x-dropdown>
             </div>
 
-            <span class="text-xs">{{ $comment['text'] }}</span>
+            <pre
+                class="font-normal text-xs">{{ $comment['text'] }}</pre>
         </div>
     @endforeach
 
