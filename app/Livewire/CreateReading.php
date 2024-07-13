@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Reading;
 use App\Models\ReadingTag;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
@@ -25,16 +26,21 @@ class CreateReading extends Component
     public string $title = '';
     public string $author = '';
     public string $gender_author = '';
-    public int $pages;
+    public int $pages = 0;
     public string $publisher = '';
     public string $translator = '';
     public string $country = '';
-    public int $year;
+    public $year;
     public string $month = '';
     public string $format = '';
     public string $gender_literary = '';
     public int $note;
     protected $listeners = ['tagChanged' => '$refresh'];
+
+    public function mount(): void
+    {
+        $this->year = (int)Carbon::now()->year;
+    }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
