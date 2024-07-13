@@ -104,9 +104,9 @@
                 <button class="text-xs font-medium hover:underline text-indigo-500"
                         wire:click="showModalAdd('{{ $note->id }}')"
                 >
-                    Comentario ({{ $note->comments?->count() }})
+                    Notas: ({{ $note->comments?->count() }})
                 </button>
-                <p class="text-xs text-foreground">
+                <p class="text-xs font-medium text-foreground">
                     Livro: {{ $note->reading?->title }}
                 </p>
             </x-slot>
@@ -115,7 +115,7 @@
 
     <x-dialog-modal wire:model="showModal">
         <x-slot name="title">
-            {{ __('Comentários') }}
+            {{ __('Notas') }}
         </x-slot>
 
         <x-slot name="content">
@@ -132,9 +132,10 @@
             <div class="flex items-center justify-between w-full gap-4 ">
 
                 <div class="w-full">
-                    <textarea type="text" wire:model="comment" id="text" class="block text-sm rounded-lg w-full mt-1"
+                    <textarea type="text" wire:model="comment" id="text"
+                              class="block text-sm border-gray-300 rounded-lg w-full mt-1"
                               placeholder="Digite..."
-                              rows="1" cols="3"></textarea>
+                              rows="4" cols="3"></textarea>
                     <x-input-error for="comment" class="mt-2"/>
                 </div>
 
