@@ -27,9 +27,9 @@
     <div
         x-show="open"
         x-cloak
-        class="hidden transition-all pl-[60px] xl:flex sm:flex-col min-h-screen md:w-1/3 lg:w-1/4 bg-white border-r border-r-gray-200 shadow p-6">
+        class="hidden bg-gray-50 transition-all pl-[60px] xl:flex sm:flex-col min-h-screen md:w-1/3 lg:w-1/4 border-r border-r-gray-200 shadow p-6">
         <div class="flex items-center justify-between pb-4 border-b">
-            <h2 class="font-semibold">Navigation</h2>
+            <h2 class="font-semibold">Professor Assistente</h2>
             <button @click="open = false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -40,58 +40,28 @@
             </button>
         </div>
 
-        <div class="flex flex-col gap-4 mt-8">
-            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="lucide lucide-messages-square">
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
-                </svg>
-
-                <span class="text-sm text-gray-500">Qual a performance de algo assim ?</span>
-            </div>
-            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="lucide lucide-messages-square">
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
-                </svg>
-
-                <span class="text-xs sm:text-sm text-gray-500">Qual a performance de algo assim ?</span>
-            </div>
-            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="lucide lucide-messages-square">
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
-                </svg>
-
-                <span class="text-xs sm:text-sm text-gray-500">Qual a performance de algo assim ?</span>
-            </div>
-            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="lucide lucide-messages-square">
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
-                </svg>
-
-                <span class="text-xs sm:text-sm text-gray-500">Qual a performance de algo assim ?</span>
-            </div>
-            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="lucide lucide-messages-square">
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
-                </svg>
-
-                <span class="text-xs sm:text-sm text-gray-500">Qual a performance de algo assim ?</span>
-            </div>
+        <div class="mt-8">
+            <x-input type="text" placeholder="Buscar" class="bg-transparent w-full"/>
         </div>
+
+        <div class="text-center mt-4 p-4">
+            <span class="text-center text-xs text-gray-400 mt-4">
+                    Não ha registros de leituras
+            </span>
+        </div>
+
+        {{--        <div class="flex flex-col gap-4 mt-8">--}}
+        {{--            <div class="flex hover:bg-gray-200 rounded-lg p-2 w-full items-center gap-1">--}}
+        {{--                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"--}}
+        {{--                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--}}
+        {{--                     class="lucide lucide-messages-square">--}}
+        {{--                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/>--}}
+        {{--                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>--}}
+        {{--                </svg>--}}
+
+        {{--                <span class="text-sm text-gray-400">Qual a performance de algo assim ?</span>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
     </div>
 
 
