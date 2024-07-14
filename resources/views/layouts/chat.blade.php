@@ -29,7 +29,7 @@
         x-cloak
         class="hidden bg-gray-50 transition-all pl-[60px] xl:flex sm:flex-col min-h-screen md:w-1/3 lg:w-1/4 border-r border-r-gray-200 shadow p-6">
         <div class="flex items-center justify-between pb-4 border-b">
-            <h2 class="font-semibold">Professor Assistente</h2>
+            <h2 class="font-semibold">Assistente</h2>
             <button @click="open = false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -66,7 +66,7 @@
 
 
     <main class="flex flex-col w-full h-full gap-4 p-4">
-        @livewire('navigation-menu')
+        @livewire('navigation-chat-menu')
 
 
         {{ $slot }}

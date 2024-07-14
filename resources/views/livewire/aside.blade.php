@@ -15,9 +15,9 @@
                 <path d="M4 4v16"></path>
             </svg>
             <span class="sr-only">Leituras</span></a>
-        <a
-            class="flex items-center justify-center transition-colors rounded-lg h-9 w-9 text-muted-foreground hover:text-foreground md:h-8 md:w-8"
-            href="{{ route('chat') }}" data-state="closed" wire:navigate>
+
+        <a class="flex items-center justify-center transition-colors rounded-lg h-9 w-9 text-muted-foreground hover:text-foreground md:h-8 md:w-8"
+           href="{{ route('chat') }}" data-state="closed" wire:navigate>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  class="lucide lucide-message-circle-more">
@@ -27,6 +27,7 @@
                 <path d="M16 12h.01"/>
             </svg>
             <span class="sr-only">Chat</span></a>
+
         <button data-state="closed"><a
                 class="flex items-center justify-center transition-colors rounded-lg h-9 w-9 text-muted-foreground hover:text-foreground md:h-8 md:w-8"
                 href="#">
