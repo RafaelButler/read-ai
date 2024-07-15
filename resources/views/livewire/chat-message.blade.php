@@ -1,11 +1,11 @@
 <div
     class="max-w-[712px] mx-auto flex flex-col justify-between h-3/6/4 lg:h-screen overflow-hidden relative scrollbar-hide">
     <div id="conversation"
-         class="flex-grow flex flex-col overflow-y-auto gap-8 h-auto overflow-auto scrollbar-hide my-12">
+         class="flex-grow flex flex-col overflow-y-auto gap-1 h-auto overflow-auto scrollbar-hide my-12">
 
         @forelse($messages as $message)
 
-            <div class="mt-4 min-w-[700px]">
+            <div class="mt-4 md:min-w-[700px] border-t border-t-gray-300 py-4">
                 @if($message['role'] === 'user')
                     <div class="w-full flex justify-end gap-3">
                         <div class="flex flex-col">
