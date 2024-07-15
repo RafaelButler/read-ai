@@ -16,6 +16,16 @@ pre {
     word-wrap: break-word;
 }
 
+#conversation {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#conversation::-webkit-scrollbar {
+    display: none;
+}
+
+    
 [x-cloak] {
     display: none;
 }
