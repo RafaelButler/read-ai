@@ -7,53 +7,86 @@
             {{--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae cupiditate excepturi facilis illum nihil, possimus quisquam ullam veniam voluptatibus. Amet at delectus esse expedita illum magnam nemo quaerat voluptates.--}}
             {{--                </span>--}}
 
-            <div class="flex flex-col gap-4 md:mt-12">
-                <div class="flex items-center gap-3">
-                    <div>
-                        <x-application-mark class="w-8 h-8"/>
+            {{--            <div class="flex flex-col gap-4 md:mt-12">--}}
+            {{--                <div class="flex items-center gap-3">--}}
+            {{--                    <div>--}}
+            {{--                        <x-application-mark class="w-8 h-8"/>--}}
+            {{--                    </div>--}}
+            {{--                    <h2 class="text-3xl font-bold">ApolloAI</h2>--}}
+            {{--                </div>--}}
+
+            {{--                <div class="bg-white p-4 rounded-lg mt-3">--}}
+            {{--                    <h3 class="flex items-center gap-2 text-gray-500 font-bold">--}}
+            {{--                        <x-application-mark class="w-4 h-4"/>--}}
+            {{--                        Recomendações--}}
+            {{--                    </h3>--}}
+
+            {{--                    <span class="text-xs text-gray-500">--}}
+            {{--                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais--}}
+            {{--                        eficiente.--}}
+            {{--                    </span>--}}
+
+            {{--                </div>--}}
+
+            {{--                <div class="bg-white p-4 rounded-lg mt-1">--}}
+            {{--                    <h3 class="text-gray-500 font-bold">--}}
+            {{--                        Recomendações--}}
+            {{--                    </h3>--}}
+
+            {{--                    <span class="text-xs text-gray-500">--}}
+            {{--                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais--}}
+            {{--                        eficiente.--}}
+            {{--                    </span>--}}
+
+            {{--                </div>--}}
+
+            {{--                <div class="bg-white p-4 rounded-lg mt-1">--}}
+            {{--                    <h3 class="text-gray-500 font-bold">--}}
+            {{--                        Recomendações--}}
+            {{--                    </h3>--}}
+
+            {{--                    <span class="text-xs text-gray-500">--}}
+            {{--                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais--}}
+            {{--                        eficiente.--}}
+            {{--                    </span>--}}
+
+            {{--                </div>--}}
+            {{--            </div>--}}
+
+            <div class="mt-12">
+
+                <div class="flex items-start gap-3">
+                    <x-application-mark class="w-8 h-8"/>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-bold">ApolloAI</span>
+                        <span class="text-xs text-gray-500">2 min atrás</span>
+                        <span class="text-xs mt-2">
+                       Olá, eu sou o ApolloAI, seu assistente! Estou aqui para te ajudar...
+                    </span>
                     </div>
-                    <h2 class="text-3xl font-bold">ApolloAI</h2>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg mt-3">
-                    <h3 class="flex items-center gap-2 text-gray-500 font-bold">
-                        <x-application-mark class="w-4 h-4"/>
-                        Recomendações
-                    </h3>
-
-                    <span class="text-sm text-gray-500">
-                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
-                        eficiente.
-                    </span>
-
+                <div class="w-full flex justify-end gap-3 mt-16">
+                    <div class="flex flex-col">
+                        <span class="text-xs text-end font-bold">Eu</span>
+                        <span class="text-xs text-end text-gray-500">4 min atrás</span>
+                        <p class="text-xs mt-2">
+                            Gostaria de saber mais sobre o que você faz. Estou interessado em saber mais sobre a
+                            ApolloAI.
+                        </p>
+                    </div>
+                    <div class="bg-indigo-500 p-2 h-fit text-white rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="lucide lucide-user">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
                 </div>
-
-                <div class="bg-white p-4 rounded-lg mt-1">
-                    <h3 class="text-gray-500 font-bold">
-                        Recomendações
-                    </h3>
-
-                    <span class="text-sm text-gray-500">
-                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
-                        eficiente.
-                    </span>
-
-                </div>
-
-                <div class="bg-white p-4 rounded-lg mt-1">
-                    <h3 class="text-gray-500 font-bold">
-                        Recomendações
-                    </h3>
-
-                    <span class="text-sm text-gray-500">
-                        ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
-                        eficiente.
-                    </span>
-
-                </div>
-
-
             </div>
+
+
         </div>
 
 
