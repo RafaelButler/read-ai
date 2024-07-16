@@ -2,19 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Conversation extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'name',
+        'historic',
+        'chat_user_id',
         'user_id',
-        'conversation',
     ];
+
+    public function chatUser(): BelongsTo
+    {
+        return $this->belongsTo(ChatUser::class);
+    }
 
     public function user(): BelongsTo
     {
@@ -24,7 +26,7 @@ class Conversation extends Model
     protected function casts(): array
     {
         return [
-            'conversation' => 'array',
+            'historic' => 'array',
         ];
     }
 }

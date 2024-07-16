@@ -76,6 +76,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the chat users for the user.
+     */
+    public function chatUsers(): HasMany
+    {
+        return $this->hasMany(ChatUser::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

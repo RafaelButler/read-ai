@@ -12,14 +12,15 @@ class ChatMessage extends Component
 {
     public string $prompt;
     public string $question;
-
     public array $messages = [];
     public string $answer = '';
     public array $instructions = [];
     public $streams;
+    private $conversation_id = null;
 
-    public function mount(): void
+    public function mount($conversationId): void
     {
+        $this->conversation_id = $conversationId;
         $my_readings = auth()->user()->readings->pluck('title')->toArray();
 
         $this->instructions = [
@@ -61,7 +62,7 @@ class ChatMessage extends Component
             'role' => 'user',
             'content' => $this->prompt,
         ];
-        
+
         $this->prompt = '';
 
         $streams = $chat->create();
@@ -83,11 +84,5 @@ class ChatMessage extends Component
         ];
 
         $this->answer = '';
-
-
-//        /* last question made by user inside messages */
-//        $this->question = $this->messages[count($this->messages) - 2]['content'];
-//        /* last response from assistant */
-//        $this->answer = $this->messages[count($this->messages) - 1]['content'];
     }
 }

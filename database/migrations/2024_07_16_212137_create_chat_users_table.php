@@ -7,17 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('conversations', function (Blueprint $table) {
+        Schema::create('chat_users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->json('conversation');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('conversations');
+        Schema::dropIfExists('chat_users');
     }
 };
