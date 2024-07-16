@@ -27,7 +27,8 @@
     <div
         x-show="open"
         x-cloak
-        class="hidden bg-gray-50 transition-all pl-[60px] xl:flex sm:flex-col min-h-screen md:w-1/3 lg:w-1/4 border-r border-r-gray-200 shadow p-6">
+        class="hidden bg-gray-50 transition-all pl-[60px] xl:flex sm:flex-col min-h-screen md:w-1/3 lg:w-1/4 border-r border-r-gray-200 shadow p-6"
+    >
         <div class="flex items-center justify-between pb-4 border-b">
             <h2 class="font-semibold">Assistente</h2>
             <button @click="open = false">
@@ -64,8 +65,8 @@
         {{--        </div>--}}
     </div>
 
-
-    <main class="flex flex-col w-full h-full gap-4 p-4">
+    <main class="flex flex-col w-full h-full gap-4 p-4"
+          :class="{ 'md:w-2/3 lg:w-3/4': open, 'md:w-full lg:w-full sm:pl-14': !open }">
         @livewire('navigation-chat-menu')
 
 

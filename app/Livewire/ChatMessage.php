@@ -56,11 +56,12 @@ class ChatMessage extends Component
 
         $chat->addInstruction('system', $this->instructions['content']);
         $chat->addMessage('user', $this->prompt);
-        
+
         $this->messages[] = [
             'role' => 'user',
             'content' => $this->prompt,
         ];
+        
         $this->prompt = '';
 
         $streams = $chat->create();
