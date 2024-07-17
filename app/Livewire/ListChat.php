@@ -14,7 +14,7 @@ class ListChat extends Component
     public string $newName = '';
 
     public $selectedChatEdit = '';
-    protected $listeners = ['changedChat' => '$refresh'];
+    protected $listeners = ['changedChat' => '$refresh', 'deleteChat' => 'delete'];
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {

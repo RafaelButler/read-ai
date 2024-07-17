@@ -6,6 +6,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class NavigationChatMenu extends Component
 {
@@ -22,9 +24,18 @@ class NavigationChatMenu extends Component
         ]);
 
         session()->put('chat', $chat->id);
-        
+
         $this->dispatch('changedChat');
         $this->dispatch('leavePage');
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function deleteConversation(): void
+    {
+        $this->dispatch('deleteChat', id: session()->get('chat'));
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View

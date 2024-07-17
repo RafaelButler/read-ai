@@ -10,7 +10,7 @@
                     <div class="w-full flex justify-end gap-3">
                         <div class="flex flex-col">
                             <span class="text-xs text-end font-bold">Eu</span>
-                            <span class="text-xs text-end text-gray-500">4 min atrás</span>
+                            {{--                            <span class="text-xs text-end text-gray-500">4 min atrás</span>--}}
                             <p class="text-xs mt-2">
                                 {{ $message['content'] }}
                             </p>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-xs font-bold">ApolloAI</span>
-                            <span class="text-xs text-gray-500">2 min atrás</span>
+                            {{--                            <span class="text-xs text-gray-500">2 min atrás</span>--}}
                             @if($message['content'])
                                 {{-- convert markdown to html --}}
                                 <pre

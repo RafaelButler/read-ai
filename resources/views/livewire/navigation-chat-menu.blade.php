@@ -37,6 +37,7 @@
                         <span class="text-xs">Conectar Leituras</span>
                     </x-secondary-button>
                     <button
+                        wire:click.debounce="deleteConversation"
                         class="flex items-center gap-1 bg-transparent text-xs px-2 py-1 rounded-lg border border-red-500 hover:bg-red-500 hover:text-gray-200 text-red-500">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
