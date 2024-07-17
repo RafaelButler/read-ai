@@ -1,5 +1,3 @@
-@props(['conversation' => null])
-
 <x-chat-layout>
-    <livewire:chat-message :conversation-id="$conversation"/>
+    <livewire:chat-message/>
 </x-chat-layout>

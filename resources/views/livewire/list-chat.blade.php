@@ -5,9 +5,13 @@
 
     @forelse($chats as $chat)
         <div class="flex flex-col text-gray-500 gap-4">
-            <a href="{{ route('chat.show', $chat->id) }}"
-               class="flex hover:bg-gray-100 rounded-lg p-2 w-full items-center gap-1"
-               wire:navigate>
+            <button
+                wire:click="selectChat('{{ $chat->id }}')"
+                {{--                href="{{ route('chat.show', $chat->id) }}"--}}
+
+                class="flex hover:bg-gray-100 rounded-lg p-2 w-full items-center gap-1"
+                :class="{'bg-gray-100': '{{ $chat->id }}' === '{{ $selectedChat }}'}"
+                wire:navigate>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucide-messages-square">
@@ -16,7 +20,7 @@
                 </svg>
 
                 <span class="text-sm ml-2">{{ $chat->name }}</span>
-            </a>
+            </button>
         </div>
     @empty
         <div class="text-center mt-4 p-4">
@@ -27,3 +31,14 @@
     @endforelse
 
 </div>
+
+@script
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Livewire.on('leavePage', () => {
+            alert('test');
+            document.querySelector('input').value = '';
+        });
+    });
+</script>
+@endscript

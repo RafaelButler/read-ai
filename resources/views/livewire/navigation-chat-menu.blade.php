@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-     class="bg-gray-50 w-full rounded-lg border-b border-r-gray-100 shadow-sm dark:bg-gray-900 dark:border-0">
+     class="bg-gray-100 w-full rounded-lg border-b border-r-gray-100 dark:bg-gray-900 dark:border-0">
     <!-- Primary Navigation Menu -->
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,7 +7,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center gap-3">
                     {{--                        <x-application-mark class="block h-9 w-auto"/>--}}
-                    <x-secondary-button class="hidden md:flex md:items-center gap-2">
+                    <x-secondary-button wire:click.debounce="createNewConversation"
+                                        class="hidden md:flex md:items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                              stroke-linejoin="round" class="lucide lucide-message-square-text">

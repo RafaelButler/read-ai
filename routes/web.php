@@ -17,13 +17,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/chat', function () {
-        return view('greetings-chat');
+        return view('chat');
     })->name('chat');
-
-    Route::get('/chat/{chat}', function ($chat) {
-        return view('chat', [
-            'id_conversation' => $chat
-        ]);
-    })->name('chat.show');
 
 });

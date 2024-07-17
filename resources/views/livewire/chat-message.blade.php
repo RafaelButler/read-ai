@@ -55,25 +55,41 @@
 
     </div>
 
-
     <form
         class="flex bg-gray-100 sticky w-full bottom-0 items-center gap-4" wire:submit.prevent="sendMessage">
         {{-- textarea --}}
 
-        <x-input
-            class="py-4"
-            placeholder="Digite sua mensagem"
-            wire:model="prompt"
-            wire:loading.class="pointer-events-none opacity-35"
-        />
-        <button class="bg-indigo-500 text-white p-3 rounded-full" type="submit" wire:loading.remove>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 class="lucide lucide-send-horizontal">
-                <path d="m3 3 3 9-3 9 19-9Z"/>
-                <path d="M6 12h16"/>
-            </svg>
-        </button>
+        @if($number_chat <= 0)
+            <x-input
+                placeholder="Digite sua mensagem"
+                class="py-4 pointer-events-none opacity-35"
+            />
+
+            <button class="bg-indigo-500 text-white p-3 rounded-full pointer-events-none opacity-35" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-send-horizontal">
+                    <path d="m3 3 3 9-3 9 19-9Z"/>
+                    <path d="M6 12h16"/>
+                </svg>
+            </button>
+        @else
+            <x-input
+                class="py-4"
+                placeholder="Digite sua mensagem"
+                wire:model="prompt"
+                wire:loading.class="pointer-events-none opacity-35"
+            />
+
+            <button class="bg-indigo-500 text-white p-3 rounded-full" type="submit" wire:loading.remove>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-send-horizontal">
+                    <path d="m3 3 3 9-3 9 19-9Z"/>
+                    <path d="M6 12h16"/>
+                </svg>
+            </button>
+        @endif
 
         <button class="bg-indigo-500 text-white p-3 rounded-full pointer-events-none" type="button"
                 wire:loading>

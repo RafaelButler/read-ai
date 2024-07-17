@@ -84,6 +84,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Conversations that belong to the user.
+     */
+    public function conversations(): HasMany
+    {
+        return $this->hasMany(Conversation::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

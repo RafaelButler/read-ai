@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="">
+    <div class="my-8">
         <div
             class="grid md:grid-cols-[1fr_250px] lg:grid-cols-3 items-start flex-1 gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 ">
             <div class="lg:col-span-2">

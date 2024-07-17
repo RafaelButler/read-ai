@@ -7,6 +7,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class ChatMessage extends Component
 {
@@ -16,11 +18,26 @@ class ChatMessage extends Component
     public string $answer = '';
     public array $instructions = [];
     public $streams;
-    private $conversation_id = null;
+    protected $listeners = ['leavePage' => '$refresh'];
+    protected $conversation_id = null;
 
-    public function mount($conversationId): void
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
-        $this->conversation_id = $conversationId;
+        try {
+            $conversation_id = session()->get('chat') ?? null;
+
+            if ($conversation_id) {
+                $this->messages = $this->getLastMessages($conversation_id);
+            }
+
+        } catch (\Exception) {
+            info('Error get lastMessages');
+        }
+
         $my_readings = auth()->user()->readings->pluck('title')->toArray();
 
         $this->instructions = [
@@ -40,13 +57,50 @@ class ChatMessage extends Component
                 Evite falar sobre o que ele não leu. Somente fale nesse caso se pedir indicação de leitura.
             ",
         ];
+
+        return view('livewire.chat-message', [
+            'number_chat' => auth()->user()->chatUsers()->count(),
+            'chat_id' => session()->get('chat')
+        ]);
     }
 
-    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
+    public function getLastMessages($id_chat): array
     {
-        return view('livewire.chat-message');
+
+        $chat = auth()
+            ->user()
+            ->chatUsers()
+            ->with(['conversations' => function ($query) {
+                $query->limit(10);
+
+            }])
+            ->find($id_chat);
+
+        if (is_null($chat)) return [];
+
+        if ($chat) return $chat->conversations?->first()->historic ?? [];
+
+        return [];
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function updatedMessages(): void
+    {
+        $conversation_id = session()->get('chat') ?? null;
+
+        if ($conversation_id) {
+            $this->messages = $this->getLastMessages($conversation_id);
+        }
+
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function sendMessage(): void
     {
         $this->validate([
@@ -83,6 +137,30 @@ class ChatMessage extends Component
             'content' => $this->answer,
         ];
 
+        $this->saveChatMessages();
+
         $this->answer = '';
     }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function saveChatMessages(): void
+    {
+        if (count($this->messages) <= 0) return;
+
+        $chatId = (int)session()->get('chat');
+
+        /* Find in conversation with chatId from session */
+        $conversation = auth()->user()->conversations()->where('chat_user_id', $chatId)->first();
+
+        if ($conversation) {
+            $conversation->update([
+                'historic' => $this->messages,
+            ]);
+        }
+
+    }
+
 }
