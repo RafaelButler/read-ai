@@ -10,6 +10,10 @@ use Livewire\Component;
 class ListChat extends Component
 {
     public string $selectedChat = '';
+    public string $editChat = '';
+    public string $newName = '';
+
+    public $selectedChatEdit = '';
     protected $listeners = ['changedChat' => '$refresh'];
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
@@ -26,7 +30,7 @@ class ListChat extends Component
         if (is_null($id)) {
             return;
         }
-        
+
         auth()->user()->chatUsers()->find($id)->delete();
         $lastChat = auth()->user()->chatUsers()->first();
         $this->selectChat($lastChat->id);
@@ -40,5 +44,33 @@ class ListChat extends Component
         $this->selectedChat = $id;
 
         $this->dispatch('leavePage');
+    }
+
+    public function cancelUpdateName(): void
+    {
+        if (!empty($this->newName)) {
+            $this->updateName();
+        }
+
+        $this->reset('selectedChatEdit', 'newName');
+
+    }
+
+    public function updateName(): void
+    {
+        $this->validate([
+            'newName' => 'required|min:3|max:255'
+        ]);
+
+        auth()->user()->chatUsers()->find($this->selectedChatEdit)->update([
+            'name' => $this->newName
+        ]);
+
+        $this->reset('selectedChatEdit', 'newName');
+    }
+
+    public function selectChatEdit(string $id): void
+    {
+        $this->selectedChatEdit = $id;
     }
 }
