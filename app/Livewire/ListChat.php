@@ -6,8 +6,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 class ListChat extends Component
 {
@@ -23,10 +21,18 @@ class ListChat extends Component
         ]);
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
+    public function delete($id): void
+    {
+        if (is_null($id)) {
+            return;
+        }
+        
+        auth()->user()->chatUsers()->find($id)->delete();
+        $lastChat = auth()->user()->chatUsers()->first();
+        $this->selectChat($lastChat->id);
+        $this->dispatch('changedChat');
+    }
+
     public function selectChat($id): void
     {
 
@@ -34,11 +40,5 @@ class ListChat extends Component
         $this->selectedChat = $id;
 
         $this->dispatch('leavePage');
-    }
-
-    public function delete($id): void
-    {
-        auth()->user()->chatUsers()->find($id)->delete();
-        $this->dispatch('changedChat');
     }
 }
