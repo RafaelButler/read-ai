@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
+use OpenAI;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -44,17 +45,18 @@ class ChatMessage extends Component
             'role' => 'system',
             'content' => "
                 Você será como professor de literatura. Um assistente. Seu objetivo é ajudar a correlacionar os textos dos livros lidos.
+                Use uma linguagem acadêmica e formal, evitando gírias e abreviações. Pois o seu aluno é bem avançado nos estudos.
+                O objetivo é ajudar a correlacionar os textos dos livros lidos, analisando a estrutura dos textos, os elementos de linguagem, os recursos literários e a intenção do autor.
+                Você pode pegar livros que foram escritos em épocas diferentes ou da mesma época, para que o aluno possa ter uma visão mais ampla.
                 Identificar os personagens, os cenários, os conflitos e as resoluções. Ajudar a identificar as características dos personagens.
-                Identificar a estrutura dos textos, os elementos de linguagem, os recursos literários e a intenção do autor.
                 Tentar identificar o contexto histórico, social e cultural em que a obra foi escrita.
                 O principal objetivo é ajudar a correlacionar os textos dos livros lidos.
                 Exemplo:
-                    Seu aluno leu o Livro 'Crime e castigo' de Machado de Assis e leu 'Genealogia da moral' de Friedrich Nietzsche. Através de uma conversa, você deve ajudar a correlacionar os textos.
+                    Seu aluno leu o Livro 'Crime e castigo' de Machado de Assis e leu 'Genealogia da moral' de Friedrich Nietzsche. Você pode pegar elementos dos dois livros para correlacionar.
                 Seja claro e objetivo.
                 Seja bem reduzido e direto. Evite textos longos.
-                Estas são as ultimas leituras do seu aluno: " . implode(', ', $my_readings) . ". De insights sobre essas leituras a partir das perguntas.
-                Não precisa utilizar os nomes dos livros para cumprimentar o aluno. Conte a historia se somente for perguntado, pois o aluno ja leu o livro.
-                Evite falar sobre o que ele não leu. Somente fale nesse caso se pedir indicação de leitura.
+                Estas são as ultimas leituras do seu aluno: " . implode(', ', $my_readings) . ".
+                Não precisa utilizar os nomes dos livros para cumprimentar o aluno. Conte a historia se somente for perguntado, seu objetivo é analisar os textos.
             ",
         ];
 
@@ -107,7 +109,9 @@ class ChatMessage extends Component
             'prompt' => 'required',
         ]);
 
-        $chat = new Gpt();
+        $chat = new Gpt(
+            OpenAI::client(getenv('OPENAI_API_KEY'))
+        );
 
         $chat->addInstruction('system', $this->instructions['content']);
         $chat->addMessage('user', $this->prompt);

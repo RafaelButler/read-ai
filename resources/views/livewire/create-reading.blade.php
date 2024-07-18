@@ -33,6 +33,7 @@
     <div class="max-h-[38.5rem]">
         <div class="relative ">
             <x-shred.table :readings="$readings" :tags="$tags"/>
+
             {{-- Customize fonts of links paginate --}}
             <div class="custom-pagination mt-4">
                 {{ $readings->links('components.paginator') }}
@@ -101,4 +102,6 @@
             </x-danger-button>
         </x-slot>
     </x-confirmation-modal>
+
+    <livewire:recommendation/>
 </div>

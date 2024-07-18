@@ -38,7 +38,8 @@
     </thead>
     <tbody>
     @foreach($readings as $reading)
-        <tr wire:key="{{ $reading->id }}" class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
+        <tr wire:key="{{ $reading->id }}"
+            class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
                 <div class="grid grid-cols-7 flex-wrap gap-1 my-1">
@@ -142,7 +143,7 @@
                     </x-slot:trigger>
 
                     <x-slot name="content">
-                        <button wire:click.prevent="editModal({{ $reading->id }})"
+                        <button wire:click.prevent="editModal('{{ $reading->id }}')"
                                 class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                  fill="none"
@@ -154,34 +155,22 @@
                             </svg>
                             Editar
                         </button>
-                        <x-dropdown-link class="text-xs flex items-center gap-1" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                 fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="lucide lucide-message-circle-more">
-                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-                                <path d="M8 12h.01"/>
-                                <path d="M12 12h.01"/>
-                                <path d="M16 12h.01"/>
-                            </svg>
-                            Recomendacoes
-                        </x-dropdown-link>
-                        <button
-                            class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="lucide lucide-notebook-pen">
-                                <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/>
-                                <path d="M2 6h4"/>
-                                <path d="M2 10h4"/>
-                                <path d="M2 14h4"/>
-                                <path d="M2 18h4"/>
-                                <path
-                                    d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/>
-                            </svg>
-                            Anotação
-                        </button>
+                        {{--                        <button--}}
+                        {{--                            wire:click.prevent="showRecommendations()"--}}
+                        {{--                            class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1"--}}
+                        {{--                        >--}}
+                        {{--                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"--}}
+                        {{--                                 fill="none"--}}
+                        {{--                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+                        {{--                                 stroke-linejoin="round"--}}
+                        {{--                                 class="lucide lucide-message-circle-more">--}}
+                        {{--                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>--}}
+                        {{--                                <path d="M8 12h.01"/>--}}
+                        {{--                                <path d="M12 12h.01"/>--}}
+                        {{--                                <path d="M16 12h.01"/>--}}
+                        {{--                            </svg>--}}
+                        {{--                            Recomendações--}}
+                        {{--                        </button>--}}
                         <x-dropdown-menu align="left" width="48">
                             <x-slot:trigger>
                                 <button
@@ -201,7 +190,7 @@
                             <x-slot name="content">
                                 @foreach($tags as $tag)
                                     <button
-                                        wire:click.prevent="addTag({{ $reading->id }}, {{ $tag->id }})"
+                                        wire:click.prevent="addTag('{{ $reading->id }}', '{{ $tag->id }}')"
                                         class="w-full text-xs flex items-center gap-1 px-4 py-2 hover:bg-gray-100"
                                     >
                                         <div
@@ -216,7 +205,7 @@
 
                         </x-dropdown-menu>
                         <button
-                            wire:click.prevent="deleteModal({{ $reading->id }})"
+                            wire:click.prevent="deleteModal('{{ $reading->id }}')"
                             class="w-full text-gray-800 text-xs flex items-center gap-1 px-4 py-2 hover:bg-red-200 rounded-md hover:text-red-500"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"

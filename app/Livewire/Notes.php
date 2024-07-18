@@ -17,8 +17,10 @@ class Notes extends Component
     public $showAdd = false;
     public string $comment = '';
     public $selected;
-
     public array $comments = [];
+    protected $listeners = [
+        'showModalAdd' => 'showModalAdd',
+    ];
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {

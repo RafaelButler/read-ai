@@ -4,19 +4,11 @@ namespace App\Services\OpenAI;
 
 use OpenAI;
 
-class Gpt
+class Gpt extends AbstractOpenAiClient
 {
     public array $messages = [];
-    private string $apiKey;
-    private OpenAI\Client $client;
 
     private array $instruction = [];
-
-    public function __construct()
-    {
-        $this->apiKey = getenv('OPENAI_API_KEY');
-        $this->client = OpenAI::client($this->apiKey);
-    }
 
     public function addMessage(string $role, string $content): void
     {

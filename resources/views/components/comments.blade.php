@@ -25,7 +25,7 @@
                     </x-slot>
                     <x-slot name="content">
                         <button
-                            wire:click="selectCommentEdit({{ $comment['id'] }})"
+                            wire:click="selectCommentEdit(`{{ $comment['id'] }}`)"
                             class="w-full text-gray-800 hover:bg-gray-100 text-xs px-4 py-2 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                  viewBox="0 0 24 24"
@@ -40,7 +40,7 @@
                             Editar
                         </button>
                         <button
-                            wire:click="deleteComment({{ $comment['id'] }})"
+                            wire:click="deleteComment(` {{ $comment['id'] }}`)"
                             class="w-full text-gray-800 text-xs flex items-center gap-1 px-4 py-2 hover:bg-red-200 rounded-md hover:text-red-500"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
