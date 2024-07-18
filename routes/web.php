@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -19,5 +23,4 @@ Route::middleware([
     Route::get('/chat', function () {
         return view('chat');
     })->name('chat');
-
 });

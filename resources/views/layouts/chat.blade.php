@@ -45,7 +45,7 @@
     </div>
 
     <main class="flex flex-col w-full h-full gap-4 p-4"
-          :class="{ 'md:w-2/3 lg:w-3/4': open, 'md:w-full lg:w-full sm:pl-14': !open }">
+          :class="{ 'md:w-full lg:w-full sm:pl-14': !open }">
         @livewire('navigation-chat-menu')
 
 

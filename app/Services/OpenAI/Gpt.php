@@ -36,7 +36,7 @@ class Gpt extends AbstractOpenAiClient
         $messages = array_merge([$this->instruction], $this->messages);
 
         return $this->client->chat()->createStreamed([
-            'model' => 'gpt-4o',
+            'model' => 'gpt-4o-mini',
             'messages' => $messages,
         ]);
     }
