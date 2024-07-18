@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto p-4 mt-26">
+    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto p-4 md:mt-26">
         <h3 class="text-sm text-indigo-800 font-bold">Features</h3>
         <h4 class="text-3xl text-center mt-1 font-bold text-gray-800">
             Transforme seus livros em <br /> uma experiência ainda mais enriquecedora
@@ -94,7 +94,7 @@
     </section>
 
 
-    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto my-28">
+    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto md:my-28">
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
             <img class="w-full rounded-lg border shadow mx-auto border-t border-t-gray-100 h-full" src="{{ getenv('APP_URL') . ':8000/chat.png' }}" alt="ApoloAI" />
@@ -127,7 +127,7 @@
 
     </section>
 
-    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto p-4 mt-26">
+    <section class="max-w-7xl flex flex-col justify-center h-full items-center mx-auto p-4 md:mt-26">
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-28">
             <div>
