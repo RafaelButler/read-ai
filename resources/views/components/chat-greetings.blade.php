@@ -3,12 +3,11 @@
         <div>
             <x-application-mark class="w-6 h-6"/>
         </div>
-        <h2 class="text-2xl font-bold">ApoloAI Assistente</h2>
+        <h2 class="text-2xl font-bold">Assistente</h2>
     </div>
 
     <div class="bg-white p-4 rounded-lg mt-3">
         <h3 class="flex items-center gap-2 text-gray-500 font-bold">
-            <x-application-mark class="w-4 h-4"/>
             Recomendações
         </h3>
 
@@ -21,7 +20,6 @@
 
     <div class="bg-white p-4 rounded-lg mt-1">
         <h3 class="flex items-center text-gray-500 font-bold">
-            <x-application-mark class="w-4 h-4"/>
             Análises
         </h3>
 
