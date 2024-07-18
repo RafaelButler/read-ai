@@ -38,7 +38,7 @@
     </thead>
     <tbody>
     @foreach($readings as $reading)
-        <tr wire:key="{{ $reading->id }}"
+        <tr :key="{{ $reading }}"
             class="bg-transparent text-sm border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row"
                 class="px-6 font-medium text-gray-500">
