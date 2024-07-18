@@ -30,10 +30,10 @@
                 @if($message['role'] === 'assistant')
                     <div class="flex items-start gap-3 mt-4">
                         <div>
-                            <x-application-mark class="block h-8 w-auto"/>
+                            <x-application-mark class="block h-6 w-auto"/>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold">ApolloAI</span>
+                            <span class="text-xs font-bold">ApoloAI</span>
                             {{--                            <span class="text-xs text-gray-500">2 min atrás</span>--}}
                             @if($message['content'])
                                 {{-- convert markdown to html --}}

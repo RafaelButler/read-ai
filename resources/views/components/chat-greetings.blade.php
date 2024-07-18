@@ -3,7 +3,7 @@
         <div>
             <x-application-mark class="w-6 h-6"/>
         </div>
-        <h2 class="text-2xl font-bold">ApolloAI Assistente</h2>
+        <h2 class="text-2xl font-bold">ApoloAI Assistente</h2>
     </div>
 
     <div class="bg-white p-4 rounded-lg mt-3">
@@ -13,7 +13,7 @@
         </h3>
 
         <span class="text-xs text-gray-500">
-            ApolloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
+            ApoloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
             eficiente.
         </span>
 
