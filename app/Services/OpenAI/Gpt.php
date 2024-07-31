@@ -30,7 +30,7 @@ class Gpt extends AbstractOpenAiClient
     {
         return $this->messages;
     }
-
+    
     public function create(): OpenAI\Responses\StreamResponse
     {
         $messages = array_merge([$this->instruction], $this->messages);

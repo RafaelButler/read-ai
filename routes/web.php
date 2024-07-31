@@ -3,12 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home2');
 });
 
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 
 
 Route::middleware([
@@ -24,4 +28,5 @@ Route::middleware([
     Route::get('/chat', function () {
         return view('chat');
     })->name('chat');
+
 });
