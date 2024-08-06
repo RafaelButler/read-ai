@@ -12,7 +12,7 @@
         </h3>
 
         <span class="text-xs text-gray-500">
-            ApoloAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
+            LeituraAI é uma plataforma de leitura que tem como objetivo ajudar você a se tornar um leitor mais
             eficiente.
         </span>
 

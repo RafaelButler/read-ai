@@ -65,12 +65,12 @@
                     </div>
                 </div>
                 {{--        <img class="w-full rounded-lg border mt-12 shadow mx-auto border-t border-t-gray-100 h-full"--}}
-                {{--             src="{{ getenv('APP_URL') . ':8000/dashboard.png' }}" alt="ApoloAI"/>--}}
+                {{--             src="{{ getenv('APP_URL') . ':8000/dashboard.png' }}" alt="AI"/>--}}
             </div>
 
             <div>
                 <img class="w-full rounded-lg border mt-12 shadow mx-auto border-t border-t-gray-100 h-full"
-                     src="{{ getenv('APP_URL') . ':/dashboard.png' }}" alt="ApoloAI"/>
+                     src="{{ getenv('APP_URL') . ':8000/dashboard.png' }}" alt="LeituraAI"/>
             </div>
         </div>
 
